@@ -4,6 +4,23 @@ namespace Ct1300_AnimacePohyb.Pages
 {
 	public partial class Animace1
 	{
+		protected override void OnInitialized()
+		{
+			InicializaceHry();
+			base.OnInitialized();
+		}
+		protected override async Task OnAfterRenderAsync(bool firstRender)
+		{
+			if (firstRender && Postava != null)
+			{
+				// Spustí animaci po načtení komponenty
+				//Postava?.Presun();
+				await Task.Run(Postava.Presun);
+				StateHasChanged(); //prekreslení komponenty
+			}
+			await base.OnAfterRenderAsync(firstRender);
+		}
+
 		private Postava? Postava { get; set; }
 
 		private void InicializaceHry()

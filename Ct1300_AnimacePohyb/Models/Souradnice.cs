@@ -14,5 +14,8 @@
 		public int PozY { get; }
 		public int Pruhlednost { get; }
 		public int VelikostObrProcenta { get; }
+
+		public string Style => $"left: {PozX}px; top: {PozY}px; opacity: {Pruhlednost/100.0}; ";
+		
 	}
 }
